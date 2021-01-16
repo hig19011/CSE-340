@@ -4,11 +4,10 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> <?=$_SESSION['contentPath'] ?> | PHP Motors</title>
+    <title> <?=$_SESSION['pageTitle'] ?> | PHP Motors</title>
     <link rel="stylesheet" media="screen" href="css/style.css" />    
   </head>
-  <body>
-  <? echo $_SESSION['contentPath']?>
+  <body> 
     <header>
       <?php require $_SERVER['DOCUMENT_ROOT'].'/phpmotors/modules/header.php' ?>
     </header>

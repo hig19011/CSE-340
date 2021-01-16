@@ -1,5 +1,5 @@
 <?php        
-    $lastModified = filemtime($contentPath);  
+    $lastModified = filemtime($_SESSION['contentPath']);  
     date_default_timezone_set('America/Phoenix');
     $date = date('d F, Y', $lastModified);
 ?> 
