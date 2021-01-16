@@ -1,6 +1,6 @@
 <article>
   <h1>Welcome to PHP Motors!</h1>
-  <section class="car-sale">
+  <div class="car-sale">
 
     <section class="features">
       <h2>DMC Delorean</h2>
@@ -13,7 +13,7 @@
 
     <img src="images/delorean.jpg" alt="Drawning of a Delorean">
     <button class="btn-action">Own Today</button>
-  </section>
+  </div>
 
   <section class="reviews">
     <h2>DMC Delorean Reviews</h2>
