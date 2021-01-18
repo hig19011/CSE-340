@@ -12,9 +12,10 @@
 
   function init($title, $contentPath, $templatePath){
     $_SESSION['pageTitle'] = $title;
-    $_SESSION['contentPath'] = $contentPath;
-
-    include($templatePath);
+    $_SESSION['contentPath'] = $_SERVER['DOCUMENT_ROOT'].$contentPath;
+    $_SESSION['contentPath'] = $_SERVER['DOCUMENT_ROOT'].'/phpmotors/'.$contentPath;
+   
+    include($_SERVER['DOCUMENT_ROOT'].'/phpmotors/'.$templatePath);
   }
 
 ?>

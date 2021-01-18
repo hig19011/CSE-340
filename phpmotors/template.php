@@ -1,7 +1,7 @@
 <?php 
     //setup page
-    include('modules/template-init.php');
-    init('Content Title', 'content/default.php','modules/template-core.php');    
+    include_once('modules/template-init.php');
+    init('Content Title', 'view/default.php','modules/template-core.php');    
 ?>
 
 
