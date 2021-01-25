@@ -20,5 +20,3 @@ function phpmotorsConnect(){
     exit;
   }
  }
-
- phpmotorsConnect();

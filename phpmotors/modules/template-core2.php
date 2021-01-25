@@ -4,22 +4,22 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> <?=$_SESSION['pageTitle'] ?> | PHP Motors</title>
+    <title> <?=$pageTitle?> | PHP Motors</title>
     <base href="/phpmotors/"/>
-    <link rel="stylesheet" media="screen" href="css/style.css" />
+    <link rel="stylesheet" media="screen" href="css/style.css" />    
   </head>
   <body> 
     <header>
       <?php require $_SERVER['DOCUMENT_ROOT'].'/phpmotors/modules/header.php' ?>
     </header>
     <nav>
-      <?php require $_SERVER['DOCUMENT_ROOT'].'/phpmotors/modules/nav.php' ?>
+      <?php require $_SERVER['DOCUMENT_ROOT'].'/phpmotors/modules/nav2.php' ?>
     </nav>
     <main>
-      <?php require $_SESSION['contentPath'] ?>
+      <?php require $_SERVER['DOCUMENT_ROOT'].$contentPath ?>
     </main>
     <footer>
-      <?php require $_SERVER['DOCUMENT_ROOT'].'/phpmotors/modules/footer.php'?>
+      <?php require $_SERVER['DOCUMENT_ROOT'].'/phpmotors/modules/footer2.php'?>
     </footer>
   </body>
 </html>
