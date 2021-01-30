@@ -44,8 +44,8 @@ switch ($action){
     break;
   
   default:
-    $pageTitle = '';
-    $contentPath = '';
+    $pageTitle = 'No Page yet';
+    $contentPath = '/phpmotors/view/template.php';
   }
  
   include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/modules/template-core.php';

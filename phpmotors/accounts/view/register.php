@@ -16,12 +16,15 @@
   <input type="submit" value="Register">
 </form>
 
-<div>  
-  <?php if($clientFirstName != U_UNDEFINED_VARIABLE)
-    echo "First Name: ".$clientFirstName."<br>";
-    echo "Last Name: ".$clientLastName."<br>";
-    echo "Email: ".$clientEmail."<br>";
-    echo "Password: ".$clientPassword."<br>";
-  ?>
+<div> 
+  <?php 
+    if(isset($clientEmail)){
+      echo "Temporary display to show capture of posted data is working. <br>";
+      echo "First Name: ".$clientFirstName."<br>";
+      echo "Last Name: ".$clientLastName."<br>";
+      echo "Email: ".$clientEmail."<br>";
+      echo "Password: ".$clientPassword."<br>";
+    } 
+  ?> 
 </div>
 

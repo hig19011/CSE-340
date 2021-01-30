@@ -15,9 +15,10 @@
 
 <div>  
   <?php 
-    echo isset($clientEmail);
-    echo "Email: ".$clientEmail."<br>";
-    echo "Password: ".$clientPassword."<br>";
-  
+    if(isset($clientEmail)){
+      echo "Temporary display to show capture of posted data is working. <br>";
+      echo "Email: ".$clientEmail."<br>";
+      echo "Password: ".$clientPassword."<br>";
+    } 
   ?>
 </div>
