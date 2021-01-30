@@ -1,15 +1,12 @@
+<?php 
+  global $navList;  
+?>
+
 <div>
-  <!-- <ul>
-    <li><a href="home.php" title="Go to the Home page">Home</a></li>
-    <li class="selected" title="Browse classic cars"><a href="#">Classic</a></li>
-    <li><a href="#" title="Browse sports cars">Sports</a></li>
-    <li><a href="#" title="Browse SUVs">SUV</a></li>
-    <li><a href="#" title="Browse trucks">Trucks</a></li>
-    <li><a href="#" title="Browse used vehicles">Used</a></li>
-  </ul> -->
-  <?php 
-    global $navList;
-    echo $navList; 
-  ?>
-  
+  <ul>
+    <li><a href="/phpmotors" title="View the PHP Motors home page">Home</a></li>    
+    <?php foreach($navList as $navItem) { ?>
+        <li><a href='/phpmotors/index.php?action=<?=urldecode($navItem); ?>' title='View our <?=$navItem?> product line'><?=$navItem?></a></li>
+    <?php } ?>
+  </ul>  
 </div>

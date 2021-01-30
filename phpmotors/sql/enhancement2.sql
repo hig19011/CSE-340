@@ -2,7 +2,7 @@ INSERT INTO `clients`(`clientFirstname`, `clientLastname`, `clientEmail`, `clien
 VALUES ('Tony', 'Stark', 'tony@starkent.com', 'Iam1ronM@n', '"I am the real Ironman"');
 
 update clients 
-set clientLevel = '3'
+set clientLevel = 3
 where clientId = 1;
 
 update inventory

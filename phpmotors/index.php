@@ -1,22 +1,14 @@
 <?php 
 
-// THis is the main controller
+// This is the main controller
 
 // Get the database connection file
 require_once 'library/connections.php';
 // Get the PHP Motors model for use as needed
 require_once 'model/main-model.php';
 
-// Get the array of classifications
-$classifications = getClassifications();
-
-// Build a navigation bar using the $classifications array
-$navList = '<ul>';
-$navList .= "<li><a href='/phpmotors/index' title='View the PHP Motors home page'>Home</a></li>";
-foreach($classifications as $classification) {
-  $navList .= "<li><a href='/phpmotors/index.php?action=".urldecode($classification['classificationName']."' title='View our $classification[classificationName] product line'>$classification[classificationName]</a></li>");
-}
-$navList .= '</ul>';
+// Get the array of classifications for nav bar view
+$navList = getClassifications();
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL){
@@ -24,12 +16,15 @@ if ($action == NULL){
 }
 
 switch ($action){
-  case 'template':
-   include 'view/template.php';
+  case 'template':   
+   $pageTitle = 'Content Title';
+   $contentPath = '/phpmotors/view/default.php';
    break;
   
   default:
-   include 'view/home.php';
+    $pageTitle = 'Home';
+    $contentPath = '/phpmotors/view/home.php';
  }
- 
+
+ include 'modules/template-core.php'
 ?>

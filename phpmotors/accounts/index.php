@@ -11,26 +11,41 @@ require_once '../model/main-model.php';
 $classifications = getClassifications();
 
 // Build a navigation bar using the $classifications array
-$navList = '<ul>';
-$navList .= "<li><a href='/phpmotors/index' title='View the PHP Motors home page'>Home</a></li>";
-foreach($classifications as $classification) {
-  $navList .= "<li><a href='/phpmotors/index.php?action=".urldecode($classification['classificationName']."' title='View our $classification[classificationName] product line'>$classification[classificationName]</a></li>");
-}
-$navList .= '</ul>';
+$navList = getClassifications();
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL){
   $action = filter_input(INPUT_GET, 'action');
 }
+//echo $action;
 
 switch ($action){
-  case '':
+  case 'login-post':
+      $clientEmail = $_POST['clientEmail'];
+      $clientPassword = $_POST['clientPassword'];      
+      $pageTitle = 'Login';
+      $contentPath = '/phpmotors/accounts/view/login.php';
+    break;
+  case 'register-post':
+      $clientFirstName = $_POST['clientFirstName'];
+      $clientLastName = $_POST['clientLastName'];
+      $clientEmail = $_POST['clientEmail'];
+      $clientPassword = $_POST['clientPassword'];
+      $pageTitle = 'Register';
+      $contentPath = '/phpmotors/accounts/view/register.php';
+    break;
+  case 'login':
+      $pageTitle = 'Content Title';
+      $contentPath = '/phpmotors/accounts/view/login.php';
+      break;
+  case 'register':   
+    $pageTitle = 'Content Title';
+    $contentPath = '/phpmotors/accounts/view/register.php';
+    break;
   
-    break;
-
   default:
-
-    break;
- }
+    $pageTitle = '';
+    $contentPath = '';
+  }
  
-?>
+  include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/modules/template-core.php';
