@@ -1,7 +1,6 @@
 <h1>Sign in</h1>
 
-<form action="/phpmotors/accounts/index.php" method="post" class="forms">
-  <input class="hide-me" hidden name="action" value="login-post">
+<form action="/phpmotors/accounts/?action=login-post" method="post" class="forms">
 
   <label for="clientEmail">Email</label>
   <input type="email" id="clientEmail" name="clientEmail" required>

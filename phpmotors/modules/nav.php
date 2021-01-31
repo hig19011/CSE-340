@@ -1,7 +1,3 @@
-<?php 
-  global $navList;  
-?>
-
 <div>
   <ul>
     <li><a href="/phpmotors" title="View the PHP Motors home page">Home</a></li>    

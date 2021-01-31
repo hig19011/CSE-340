@@ -1,8 +1,6 @@
 <h1>Register</h1>
 
-<form action="/phpmotors/accounts/index.php" method="post" class="forms">
-  <input class="hide-me" hidden name="action" value="register-post">
-
+<form action="/phpmotors/accounts/?action=register-post" method="post" class="forms">
   <label for="clientFirstName">First Name</label>
   <input type="text" id="clientFirstName" name="clientFirstName" required>
   <label for="clientLastName">Last Name</label>
