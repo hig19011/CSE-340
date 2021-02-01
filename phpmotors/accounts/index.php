@@ -1,48 +1,79 @@
-<?php 
+<?php
 
-// THis is the main controller
+// This is the main controller
 
 // Get the database connection file
 require_once '../library/connections.php';
 // Get the PHP Motors model for use as needed
 require_once '../model/main-model.php';
+require_once '../model/accounts-model.php';
+
+// consolidate page titles and path to avoid magic strings
+$loginTitle = 'Login';
+$loginPath = '/phpmotors/view/login.php';
+$registerTitle = 'Register';
+$registerPath = '/phpmotors/view/register.php';
 
 // Build a navigation bar using the $classifications array
 $navList = getClassifications();
 
 $action = filter_input(INPUT_POST, 'action');
-if ($action == NULL){
+if ($action == NULL) {
   $action = filter_input(INPUT_GET, 'action');
 }
 //echo $action;
 
-switch ($action){
-  case 'login-post':
-      $clientEmail = $_POST['clientEmail'];
-      $clientPassword = $_POST['clientPassword'];      
-      $pageTitle = 'Login';
-      $contentPath = '/phpmotors/accounts/view/login.php';
-    break;
-  case 'register-post':
-      $clientFirstName = $_POST['clientFirstName'];
-      $clientLastName = $_POST['clientLastName'];
-      $clientEmail = $_POST['clientEmail'];
-      $clientPassword = $_POST['clientPassword'];
-      $pageTitle = 'Register';
-      $contentPath = '/phpmotors/accounts/view/register.php';
-    break;
-  case 'login':
-      $pageTitle = 'Content Title';
-      $contentPath = '/phpmotors/accounts/view/login.php';
+switch ($action) {
+
+  case 'register':
+    $pageTitle = $registerTitle;
+    $contentPath = $registerPath;
+
+    $clientFirstName = filter_input(INPUT_POST, 'clientFirstName');
+    $clientLastName = filter_input(INPUT_POST, 'clientLastName');
+    $clientEmail = filter_input(INPUT_POST, 'clientEmail');
+    $clientPassword = filter_input(INPUT_POST, 'clientPassword');
+
+    // Check for missing data
+    if (empty($clientFirstName) || empty($clientLastName) || empty($clientEmail) || empty($clientPassword)) {
+      $message = '<p class="errorMessage">Please provide information for all empty form fields.</p>';
       break;
-  case 'register':   
-    $pageTitle = 'Content Title';
-    $contentPath = '/phpmotors/accounts/view/register.php';
+    }
+
+    // Send the data to the model
+    $regOutcome = regClient($clientFirstName, $clientLastName, $clientEmail, $clientPassword);
+
+    // Check and report the result
+    if ($regOutcome === 1) {
+      $message = "<p class='successMessage'>Thanks for registering $clientFirstName. Please use your email and password to login.</p>";   
+      $pageTitle = $loginTitle;
+      $contentPath = $loginPath;  
+    } else {
+      $message = "<p class='errorMessage'>Sorry $clientFirstName, but the registration failed. Please try again.</p>";
+    }
+
     break;
-  
+
+  case 'login':
+    $pageTitle = $loginTitle;
+    $contentPath = $loginPath;
+
+    $clientEmail = filter_input(INPUT_POST, 'clientEmail');
+    $clientPassword = filter_input(INPUT_POST, 'clientPassword');
+
+    break;
+  case 'login-page':
+    $pageTitle = $loginTitle;
+    $contentPath = $loginPath;
+    break;
+  case 'register-page':
+    $pageTitle = $registerTitle;
+    $contentPath = $registerPath;
+    break;
+
   default:
     $pageTitle = 'No Page yet';
     $contentPath = '/phpmotors/view/template.php';
-  }
- 
-  include $_SERVER['DOCUMENT_ROOT'].'/phpmotors/modules/template-core.php';
+}
+
+include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/modules/template-core.php';

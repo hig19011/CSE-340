@@ -162,6 +162,14 @@ h2 {
   }
 }
 
+.errorMessage {
+  color: red;
+}
+
+.successMessage {
+  color: $blue;
+}
+
 @media screen and (min-width: 800px){
 
   html { 
