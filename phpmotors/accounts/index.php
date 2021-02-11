@@ -1,6 +1,6 @@
 <?php
 
-// This is the main controller
+// This is the accounts controller
 
 // Get the database connection file
 require_once '../library/connections.php';
@@ -29,10 +29,10 @@ switch ($action) {
     $pageTitle = $registerTitle;
     $contentPath = $registerPath;
 
-    $clientFirstName = filter_input(INPUT_POST, 'clientFirstName');
-    $clientLastName = filter_input(INPUT_POST, 'clientLastName');
-    $clientEmail = filter_input(INPUT_POST, 'clientEmail');
-    $clientPassword = filter_input(INPUT_POST, 'clientPassword');
+    $clientFirstName = filter_input(INPUT_POST, 'clientFirstName', FILTER_SANITIZE_STRING);
+    $clientLastName = filter_input(INPUT_POST, 'clientLastName', FILTER_SANITIZE_STRING);
+    $clientEmail = filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL);
+    $clientPassword = filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_STRING);
 
     // Check for missing data
     if (empty($clientFirstName) || empty($clientLastName) || empty($clientEmail) || empty($clientPassword)) {
@@ -58,8 +58,8 @@ switch ($action) {
     $pageTitle = $loginTitle;
     $contentPath = $loginPath;
 
-    $clientEmail = filter_input(INPUT_POST, 'clientEmail');
-    $clientPassword = filter_input(INPUT_POST, 'clientPassword');
+    $clientEmail = filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL);
+    $clientPassword = filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_STRING);
 
     break;
   case 'login-page':

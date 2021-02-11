@@ -6,7 +6,7 @@
   }
 ?>
 
-<form action="/phpmotors/accounts/index.php" method="post" class="forms">
+<form method="post" class="forms">
   <label for="clientFirstName">First Name</label>
   <input type="text" id="clientFirstName" name="clientFirstName" required>
   <label for="clientLastName">Last Name</label>
