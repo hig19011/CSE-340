@@ -4,38 +4,7 @@
  *  This model is used for handling the Vehicles
  */
 
-class inventory
-{
-  public $invId;
-  public $invColor;
-  public $invDescription;
-  public $invImage;
-  public $invMake;
-  public $invModel;
-  public $invPrice;
-  public $invStock;
-  public $invThumbnail;
-  public $classificationId;
-
-  function isInvalid()
-  {
-    if (
-      empty($this->invColor)
-      || empty($this->invDescription)
-      || empty($this->invImage)
-      || empty($this->invThumbnail)
-      || empty($this->invMake)
-      || empty($this->invModel)
-      || empty($this->invPrice)
-      || empty($this->invStock)
-      || empty($this->invThumbnail)
-      || empty($this->classificationId)
-    ) {
-      return true;
-    }
-    return false;
-  }
-}
+require_once '../library/vehicle.php';
 
 // Create a new vehicle type
 function createVehicle($vehicle)

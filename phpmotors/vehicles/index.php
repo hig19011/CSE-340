@@ -7,6 +7,7 @@ require_once '../library/connections.php';
 // Get the PHP Motors model for use as needed
 require_once '../model/main-model.php';
 require_once '../model/vehicles-model.php';
+require_once '../library/vehicle.php';
 
 // consolidate page titles and path to minimize magic strings
 $addClassificationTitle = 'Add Car Classification';
@@ -40,15 +41,15 @@ switch ($action) {
     $classificationList = $navList;
     
     $vehicle = new inventory();
-    $vehicle->classificationId = filter_input(INPUT_POST, 'classificationId');
-    $vehicle->invColor = filter_input(INPUT_POST, 'invColor');
-    $vehicle->invDescription = filter_input(INPUT_POST, 'invDescription');
-    $vehicle->invImage = filter_input(INPUT_POST, 'invImage');
-    $vehicle->invThumbnail = filter_input(INPUT_POST, 'invThumbnail');
-    $vehicle->invMake = filter_input(INPUT_POST, 'invMake');
-    $vehicle->invModel = filter_input(INPUT_POST, 'invModel');
-    $vehicle->invPrice = filter_input(INPUT_POST, 'invPrice');
-    $vehicle->invStock = filter_input(INPUT_POST, 'invStock');
+    $vehicle->classificationId = filter_input(INPUT_POST, 'classificationId',FILTER_SANITIZE_NUMBER_INT);
+    $vehicle->invColor = filter_input(INPUT_POST, 'invColor',FILTER_SANITIZE_STRING);
+    $vehicle->invDescription = filter_input(INPUT_POST, 'invDescription',FILTER_SANITIZE_STRING);
+    $vehicle->invImage = filter_input(INPUT_POST, 'invImage',FILTER_SANITIZE_STRING);
+    $vehicle->invThumbnail = filter_input(INPUT_POST, 'invThumbnail',FILTER_SANITIZE_STRING);
+    $vehicle->invMake = filter_input(INPUT_POST, 'invMake',FILTER_SANITIZE_STRING);
+    $vehicle->invModel = filter_input(INPUT_POST, 'invModel',FILTER_SANITIZE_STRING);
+    $vehicle->invPrice = filter_input(INPUT_POST, 'invPrice',FILTER_SANITIZE_NUMBER_FLOAT);
+    $vehicle->invStock = filter_input(INPUT_POST, 'invStock',FILTER_SANITIZE_NUMBER_INT);
 
     // Check for missing data
     if ($vehicle->isInvalid()) {
