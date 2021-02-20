@@ -512,26 +512,53 @@ h2 {
   display: none !important;
 }
 
-.forms label {
+form label {
   display: block;
 }
 
-.forms input {
+form input {
   display: block;
   padding: 4px;
   margin: 4px;
 }
 
-.forms input[type="submit"] {
+form input[type="submit"] {
   margin-top: 12px;
 }
 
+form select,
+form textarea {
+  margin: 4px;
+}
+
+form input#clientPassword {
+  display: inline;
+}
+
+.validatedForm input:invalid {
+  border: 1px solid red;
+}
+
+.validatedForm input:required:valid {
+  border: 1px solid green;
+}
+
+.validatedForm input:focus:invalid {
+  background-color: pink;
+}
+
 .errorMessage {
-  color: red;
+  color: #c00000;
 }
 
 .successMessage {
-  color: #4c96d7;
+  color: #1269b6;
+}
+
+.subtext {
+  font-size: 12px;
+  color: #333333;
+  margin-left: 4px;
 }
 
 @media screen and (min-width: 800px) {

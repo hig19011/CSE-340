@@ -13,7 +13,8 @@
         <?php require $_SERVER['DOCUMENT_ROOT'].'/phpmotors/modules/header.php' ?>
       </header>
       <nav>
-        <?php require $_SERVER['DOCUMENT_ROOT'].'/phpmotors/modules/nav.php' ?>
+        <!-- <?php require $_SERVER['DOCUMENT_ROOT'].'/phpmotors/modules/nav.php' ?> -->
+        <?php $nav = buildNav($navList); echo $nav; ?>
       </nav>
       <main>
         <?php require $_SERVER['DOCUMENT_ROOT'].$contentPath ?>
@@ -21,5 +22,6 @@
       <footer>
         <?php require $_SERVER['DOCUMENT_ROOT'].'/phpmotors/modules/footer.php'?>
       </footer> 
+      <script src="/phpmotors/js/library.js"></script>
   </body>
 </html>

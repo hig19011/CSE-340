@@ -4,9 +4,13 @@
 
 // Get the database connection file
 require_once '../library/connections.php';
+// Get the functions library
+require_once '../library/functions.php';
+
 // Get the PHP Motors model for use as needed
 require_once '../model/main-model.php';
 require_once '../model/accounts-model.php';
+
 
 // consolidate page titles and path to avoid magic strings
 $loginTitle = 'Login';
@@ -34,14 +38,20 @@ switch ($action) {
     $clientEmail = filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL);
     $clientPassword = filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_STRING);
 
+    $clientEmail = checkEmail($clientEmail);
+    $checkPassword = checkPassword($clientPassword);
+
     // Check for missing data
-    if (empty($clientFirstName) || empty($clientLastName) || empty($clientEmail) || empty($clientPassword)) {
+    if (empty($clientFirstName) || empty($clientLastName) || empty($clientEmail) || empty($checkPassword)) {
       $message = '<p class="errorMessage">Please provide information for all empty form fields.</p>';
       break;
     }
 
+    // Hash the checked password
+    $hashedPassword = password_hash($clientPassword, PASSWORD_DEFAULT);
+
     // Send the data to the model
-    $regOutcome = regClient($clientFirstName, $clientLastName, $clientEmail, $clientPassword);
+    $regOutcome = regClient($clientFirstName, $clientLastName, $clientEmail, $hashedPassword);
 
     // Check and report the result
     if ($regOutcome === 1) {
@@ -60,6 +70,15 @@ switch ($action) {
 
     $clientEmail = filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL);
     $clientPassword = filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_STRING);
+
+    $clientEmail = checkEmail($clientEmail);
+    $checkPassword = checkPassword($clientPassword);
+
+    // Check for missing data
+    if (empty($clientEmail) || empty($checkPassword)) {
+      $message = '<p class="errorMessage">Please provide information for all empty form fields.</p>';
+      break;
+    }
 
     break;
   case 'login-page':

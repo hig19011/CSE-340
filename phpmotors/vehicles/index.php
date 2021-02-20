@@ -4,10 +4,14 @@
 
 // Get the database connection file
 require_once '../library/connections.php';
+// Get the functions library
+require_once '../library/functions.php';
+
 // Get the PHP Motors model for use as needed
 require_once '../model/main-model.php';
 require_once '../model/vehicles-model.php';
 require_once '../library/vehicle.php';
+
 
 // consolidate page titles and path to minimize magic strings
 $addClassificationTitle = 'Add Car Classification';
@@ -48,7 +52,7 @@ switch ($action) {
     $vehicle->invThumbnail = filter_input(INPUT_POST, 'invThumbnail',FILTER_SANITIZE_STRING);
     $vehicle->invMake = filter_input(INPUT_POST, 'invMake',FILTER_SANITIZE_STRING);
     $vehicle->invModel = filter_input(INPUT_POST, 'invModel',FILTER_SANITIZE_STRING);
-    $vehicle->invPrice = filter_input(INPUT_POST, 'invPrice',FILTER_SANITIZE_NUMBER_FLOAT);
+    $vehicle->invPrice = filter_input(INPUT_POST, 'invPrice',FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
     $vehicle->invStock = filter_input(INPUT_POST, 'invStock',FILTER_SANITIZE_NUMBER_INT);
 
     // Check for missing data
