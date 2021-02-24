@@ -2,13 +2,10 @@
 
 // This is the accounts controller
 
-// Get the database connection file
-require_once '../library/connections.php';
-// Get the functions library
-require_once '../library/functions.php';
+// Initialize controller
+require_once $_SERVER['DOCUMENT_ROOT'].'/phpmotors/library/controller_init.php';
 
-// Get the PHP Motors model for use as needed
-require_once '../model/main-model.php';
+// Get models for controller
 require_once '../model/vehicles-model.php';
 require_once '../library/vehicle.php';
 
@@ -21,8 +18,6 @@ $addVehiclePath = '/phpmotors/view/add-vehicle.php';
 $manageVehicleTitle = 'Manage Vehicles';
 $manageVehiclePath = '/phpmotors/view/vehicle-man.php';
 
-// Build a navigation bar using the $classifications array
-$navList = getClassifications();
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {

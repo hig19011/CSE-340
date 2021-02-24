@@ -362,19 +362,17 @@ body img {
 }
 
 header div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr auto auto;
+      grid-template-columns: 1fr auto auto;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+header div span {
+  margin-right: 16px;
 }
 
 header div a {
@@ -548,17 +546,57 @@ form input#clientPassword {
 }
 
 .errorMessage {
+  display: inline-block;
   color: #c00000;
+  border: solid 1px #dd7b03;
+  padding: 4px;
 }
 
 .successMessage {
+  display: inline-block;
   color: #1269b6;
+  border: solid 1px #dd7b03;
+  padding: 4px;
+}
+
+.noticeMessage {
+  display: inline-block;
+  color: #dd7b03;
+  border: solid 1px #dd7b03;
+  padding: 4px;
 }
 
 .subtext {
   font-size: 12px;
   color: #333333;
   margin-left: 4px;
+}
+
+.clientInfo ul {
+  display: inline-block;
+  padding-left: 16px;
+}
+
+.clientInfo ul li {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 2fr 3fr;
+      grid-template-columns: 2fr 3fr;
+}
+
+.clientInfo ul li span:first-child {
+  font-weight: bold;
+  margin-right: 16px;
+}
+
+.welcome {
+  padding-right: 0px;
+}
+
+@media screen and (min-width: 600px) {
+  .welcome {
+    padding-right: 32px;
+  }
 }
 
 @media screen and (min-width: 800px) {

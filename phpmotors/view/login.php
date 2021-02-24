@@ -1,12 +1,11 @@
 <h1>Sign in</h1>
 
 <?php 
-  if(isset($message)) {
-    echo $message;
+  if(isset($_SESSION['message'])) {
+    echo $_SESSION['message'];
   }
 ?>
-
-<form method="post">
+<form method="post" action="/phpmotors/accounts/">
 
   <label for="clientEmail">Email</label>
   <input type="email" id="clientEmail" name="clientEmail" 
@@ -18,6 +17,6 @@
   pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
   <button id="passwordButton" type="button">Show Password</button>
   <input type="submit" value="Sign-in">
-  <a href="/phpmotors/accounts/index.php?action=register-page">Not a member yet?</a>
   <input type="hidden" name="action" value="login">
+  <a href="/phpmotors/accounts/index.php?action=register-page">Not a member yet?</a>  
 </form>

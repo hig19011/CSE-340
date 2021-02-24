@@ -29,7 +29,7 @@ CREATE TABLE `inventory` (
   `invId` int UNSIGNED NOT NULL,
   `invMake` varchar(30) NOT NULL,
   `invModel` varchar(30) NOT NULL,
-  `invDescription` text DEFAULT NULL,
+  `invDescription` text NOT NULL,
   `invImage` varchar(50) NOT NULL,
   `invThumbnail` varchar(50) NOT NULL,
   `invPrice` decimal(10,2) NOT NULL,

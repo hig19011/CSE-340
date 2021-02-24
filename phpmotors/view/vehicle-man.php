@@ -1,3 +1,10 @@
+<?php 
+if($_SESSION['loggedIn'] == false || $_SESSION['clientData']['clientLevel'] < 2){
+  header('Location: /phpmotors/');
+  exit;
+}
+?>
+
 <h1>Vehicle Management</h1>
 
 <div>
