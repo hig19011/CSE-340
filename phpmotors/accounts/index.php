@@ -40,13 +40,13 @@ switch ($action) {
 
     // Check for missing data
     if (empty($clientFirstName) || empty($clientLastName) || empty($clientEmail) || empty($checkPassword)) {
-      $message = '<p class="errorMessage">Please provide information for all empty form fields.</p>';
+      $_SESSION['message'] = '<p class="errorMessage">Please provide information for all empty form fields.</p>';
       break;
     }
 
     $emailExists = doesEmailExist($clientEmail);
     if($emailExists){
-      $message = '<p class="noticeMessage">That email address already exists. Do you want to login instead?</p>';
+      $_SESSION['message'] = '<p class="noticeMessage">That email address already exists. Do you want to login instead?</p>';
       break;
     }
 
@@ -62,7 +62,7 @@ switch ($action) {
       $_SESSION['message'] = "<p class='successMessage'>Thanks for registering $clientFirstName. Please use your email and password to login.</p>";   
       header('Location: /phpmotors/accounts/?action=login');
     } else {
-      $message = "<p class='errorMessage'>Sorry $clientFirstName, but the registration failed. Please try again.</p>";
+      $_SESSION['message'] = "<p class='errorMessage'>Sorry $clientFirstName, but the registration failed. Please try again.</p>";
     }
 
     break;
@@ -79,19 +79,25 @@ switch ($action) {
 
     // Check for missing data
     if (empty($clientEmail) || empty($checkPassword)) {
-      $message = '<p class="errorMessage">Please provide information for all empty form fields.</p>';
+      $_SESSION['message'] = '<p class="errorMessage">Please provide information for all empty form fields.</p>';
       break;
     }
 
     //Get the client data
     $clientData = getClient($clientEmail);
+    if($clientData == false)
+    {
+      $_SESSION['message'] = '<p class="noticeMessage">Please check your email and try again</p>';
+      break;
+    }
     //Verify submitted password matches the one on file.  Return error message if mismatch.
     $hashCheck = password_verify($clientPassword, $clientData['clientPassword']);
     if(!$hashCheck) {
-      $message = '<p class="noticeMessage">Please check your password and try again.</p>';
+      $_SESSION['message'] = '<p class="noticeMessage">Please check your password and try again.</p>';
       break;
     }
-
+    $_SESSION['message'] = "";
+    
     // User is value, consider them logged in.
     $_SESSION['loggedIn'] = true;
 
@@ -112,6 +118,7 @@ switch ($action) {
   case 'register-page':
     $pageTitle = $registerTitle;
     $contentPath = $registerPath;
+    $_SESSION['message'] = "";
     break;
 
   case 'logout':
