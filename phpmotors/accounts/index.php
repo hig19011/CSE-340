@@ -60,7 +60,7 @@ switch ($action) {
     if ($regOutcome === 1) {
       setcookie('firstName',$clientFirstName, strtotime('+1 year'),'/');
       $_SESSION['message'] = "<p class='successMessage'>Thanks for registering $clientFirstName. Please use your email and password to login.</p>";   
-      header('Location: /phpmotors/accounts/?action=login');
+      header('Location: /phpmotors/accounts/?action=login-page');
     } else {
       $_SESSION['message'] = "<p class='errorMessage'>Sorry $clientFirstName, but the registration failed. Please try again.</p>";
     }
