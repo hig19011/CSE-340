@@ -32,6 +32,46 @@ function regClient($clientFirstName, $clientLastName, $clientEmail, $clientPassw
     return $rowsChanged;
 }
 
+// Update an existing client
+function updateClient($clientId, $clientFirstName, $clientLastName, $clientEmail)
+{
+    $db = phpmotorsConnect();
+    $sql = 'UPDATE clients 
+            SET clientFirstName = :clientFirstName, clientLastName = :clientLastName, clientEmail = :clientEmail
+            WHERE clientId = :clientId';    
+    $stmt = $db->prepare($sql);
+
+    $stmt->bindValue(':clientFirstName', $clientFirstName, PDO::PARAM_STR);
+    $stmt->bindValue(':clientLastName', $clientLastName, PDO::PARAM_STR);
+    $stmt->bindValue(':clientEmail', $clientEmail, PDO::PARAM_STR);
+    $stmt->bindValue(':clientId', $clientId, PDO::PARAM_INT);
+    
+    $stmt->execute();
+    $rowsChanged = $stmt->rowCount();
+    $stmt->closeCursor();
+    
+    return $rowsChanged;
+}
+
+// Update an clients password
+function updatePassword($clientId, $clientPassword)
+{
+    $db = phpmotorsConnect();
+    $sql = 'UPDATE clients 
+            SET clientPassword = :clientPassword
+            WHERE clientId = :clientId';    
+    $stmt = $db->prepare($sql);
+
+    $stmt->bindValue(':clientPassword', $clientPassword, PDO::PARAM_STR);
+    $stmt->bindValue(':clientId', $clientId, PDO::PARAM_INT);
+    
+    $stmt->execute();
+    $rowsChanged = $stmt->rowCount();
+    $stmt->closeCursor();
+    
+    return $rowsChanged;
+}
+
 /* 
  *  This function will check to see if an existing email already exists
  */
@@ -70,6 +110,21 @@ function getClient($clientEmail)
             WHERE clientEmail = :clientEmail';
     $stmt = $db->prepare($sql);  
     $stmt->bindValue(':clientEmail', $clientEmail, PDO::PARAM_STR);
+    $stmt->execute();
+    $clientData = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $clientData;
+}
+
+
+function getClientById($clientId)
+{
+    $db = phpmotorsConnect();
+    $sql = 'SELECT clientId, clientFirstName, clientLastName, clientEmail, clientLevel, clientPassword 
+            FROM clients 
+            WHERE clientId = :clientId';
+    $stmt = $db->prepare($sql);  
+    $stmt->bindValue(':clientId', $clientId, PDO::PARAM_STR);
     $stmt->execute();
     $clientData = $stmt->fetch(PDO::FETCH_ASSOC);
     $stmt->closeCursor();
