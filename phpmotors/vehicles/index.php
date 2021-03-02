@@ -86,13 +86,22 @@ switch ($action) {
     $vehicle->invPrice = filter_input(INPUT_POST, 'invPrice',FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
     $vehicle->invStock = filter_input(INPUT_POST, 'invStock',FILTER_SANITIZE_NUMBER_INT);
 
+   
+
     // Check for missing data
     if ($vehicle->isInvalid()) {
       $_SESSION['message'] = '<p class="errorMessage">Please enter information for all fields.</p>';
       $carMakes = getExistingVehicleMakes();
+      if(isset($vehicle->invMake) && isset($vehicle->invModel)){ 
+        $pageTitle = "Modify $vehicle->invMake $vehicle->invModel";
+      }
+      // elseif(isset($invMake) && isset($invModel)) { 
+      //   $pageTitle = "Modify $invMake $invModel"; 
+      // }    
+      $contentPath = $updateVehiclePath;
       break;
     }    
-
+    
     // Send the data to the model
     $updateResult = updateVehicle($vehicle);
 
@@ -106,12 +115,12 @@ switch ($action) {
       $_SESSION['message'] = "<p class='errorMessage'>Sorry, the modification of the vehicle failed. Please try again.</p>";
     }
 
-    if(isset($invInfo['invMake']) && isset($invInfo['invModel'])){ 
-      $pageTitle = "Modify $invInfo[invMake] $invInfo[invModel]";
+    if(isset($vehicle->invMake) && isset($vehicle->invModel)){ 
+      $pageTitle = "Modify $vehicle->invMake $vehicle->invModel";
     }
-    elseif(isset($invMake) && isset($invModel)) { 
-      $pageTitle = "Modify $invMake $invModel"; 
-    }    
+    // elseif(isset($invMake) && isset($invModel)) { 
+    //   $pageTitle = "Modify $invMake $invModel"; 
+    // }    
     $contentPath = $updateVehiclePath;
 
     //pull in new vehicle makes;
@@ -122,6 +131,7 @@ switch ($action) {
     $vehicle->invId = filter_input(INPUT_POST, 'invId', FILTER_SANITIZE_NUMBER_INT);
     $vehicle->invMake = filter_input(INPUT_POST, 'invMake',FILTER_SANITIZE_STRING);
     $vehicle->invModel = filter_input(INPUT_POST, 'invModel',FILTER_SANITIZE_STRING);
+    $vehicle->invDescription = filter_input(INPUT_POST, 'invDescription',FILTER_SANITIZE_STRING);
 
     // Send the data to the model
     $deleteResult = deleteVehicle($vehicle->invId);
@@ -135,13 +145,10 @@ switch ($action) {
       $_SESSION['message'] = "<p class='errorMessage'>Error: the deletion of $vehicle->invMake $vehicle->invModel failed.</p>";
     }
 
-    if(isset($invInfo['invMake']) && isset($invInfo['invModel'])){ 
-      $pageTitle = "Delete $invInfo[invMake] $invInfo[invModel]";
-    }
-    elseif(isset($invMake) && isset($invModel)) { 
-      $pageTitle = "Delete $invMake $invModel"; 
-    }    
-    $contentPath = $updateVehiclePath;
+    if(isset($vehicle->invMake ) && isset($vehicle->invModel)){ 
+      $pageTitle = "Delete $vehicle->invMake  $vehicle->invModel";
+    }  
+    $contentPath = $deleteVehiclePath;
 
     //pull in new vehicle makes;
     $carMakes = getExistingVehicleMakes();
@@ -197,33 +204,30 @@ switch ($action) {
   
   case 'mod':
     $invId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
-    $invInfo = getInvItemInfo($invId);
-    if(count($invInfo)<1){
+    $vehicle = getInvItemInfo($invId);
+    
+    if(!$vehicle){
       $_SESSION['message'] = '<p class="noticeMessage">Sorry, no vehicle information could be found.</p>';
     }
 
-    if(isset($invInfo['invMake']) && isset($invInfo['invModel'])){ 
-      $pageTitle = "Modify $invInfo[invMake] $invInfo[invModel]";
+    if(isset($vehicle->invMake) && isset($vehicle->invModel)){ 
+      $pageTitle = "Modify $vehicle->invMake $vehicle->invModel";
     }
-    elseif(isset($invMake) && isset($invModel)) { 
-      $pageTitle = "Modify $invMake $invModel"; 
-    }    
+    
     $contentPath = $updateVehiclePath;
     break;
 
   case 'del':
     $invId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
-    $invInfo = getInvItemInfo($invId);
-    if(count($invInfo)<1){
+    $vehicle = getInvItemInfo($invId);
+    if(!$vehicle){
       $_SESSION['message'] = '<p class="noticeMessage">Sorry, no vehicle information could be found.</p>';
     }
 
-    if(isset($invInfo['invMake']) && isset($invInfo['invModel'])){ 
-      $pageTitle = "Delete $invInfo[invMake] $invInfo[invModel]";
+    if(isset($vehicle->invMake) && isset($vehicle->invModel)){ 
+      $pageTitle = "Delete $vehicle->invMake $vehicle->invModel";
     }
-    elseif(isset($invMake) && isset($invModel)) { 
-      $pageTitle = "Delete $invMake $invModel"; 
-    }    
+    
     $contentPath = $deleteVehiclePath;
     break;
 

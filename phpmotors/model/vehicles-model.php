@@ -60,7 +60,7 @@ function updateVehicle($vehicle)
   // The next nine lines replace the placeholders in the SQL
   // statement with the actual values in the variables
   // and tells the database the type of data it is
-  $stmt->bindValue(':invId', $vehicle->invId, PDO::PARAM_STR);
+  $stmt->bindValue(':invId', $vehicle->invId, PDO::PARAM_INT);
   $stmt->bindValue(':invMake', $vehicle->invMake, PDO::PARAM_STR);
   $stmt->bindValue(':invModel', $vehicle->invModel, PDO::PARAM_STR);
   $stmt->bindValue(':invDescription', $vehicle->invDescription, PDO::PARAM_STR);
@@ -143,7 +143,11 @@ function getInvItemInfo($invId){
   $stmt = $db->prepare($sql);
   $stmt->bindValue(':invId', $invId, PDO::PARAM_INT);
   $stmt->execute();
-  $invInfo = $stmt->fetch(PDO::FETCH_ASSOC);
+  
+  $stmt->setFetchMode(PDO::FETCH_CLASS, 'inventory');
+  $invInfo = $stmt->fetch();
+  
+  //$invInfo = $stmt->fetch(PDO::FETCH_ASSOC);
   $stmt->closeCursor();
   return $invInfo;
  }
