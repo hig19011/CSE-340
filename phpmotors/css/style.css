@@ -545,6 +545,10 @@ form input#clientPassword {
   background-color: pink;
 }
 
+.passwordButton {
+  display: block;
+}
+
 .errorMessage {
   display: inline-block;
   color: #c00000;

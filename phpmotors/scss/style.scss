@@ -190,6 +190,10 @@ form {
   }
 }
 
+.passwordButton {
+  display:block;
+}
+
 .errorMessage {
   display: inline-block;
   color: $red;

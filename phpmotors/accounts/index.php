@@ -142,8 +142,11 @@ switch ($action) {
       break;
     }
       
+    // Hash the checked password
+    $hashedPassword = password_hash($clientPassword, PASSWORD_DEFAULT);
+    
     // Send the data to the model
-    $updateOutcome = updatePassword($clientId, $clientPassword);
+    $updateOutcome = updatePassword($clientId, $hashedPassword);
 
     // Check and report the result
     if ($updateOutcome === 1) {
