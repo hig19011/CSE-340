@@ -8,9 +8,7 @@ if($_SESSION['loggedIn'] == false || $_SESSION['clientData']['clientLevel'] < 2)
 <h1>Add Classification</h1>
 
 <?php 
-  if(isset($message)) {
-    echo $message;
-  }
+  displayGlobalMessage();
 ?>
 
 <form method="post" class="forms">

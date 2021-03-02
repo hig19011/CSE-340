@@ -15,6 +15,6 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/phpmotors/library/functions.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/phpmotors/model/main-model.php';
 
 // Build a navigation bar using the $classifications array
-$navList = getClassifications();
+$classifications = getClassifications();
 
 ?>

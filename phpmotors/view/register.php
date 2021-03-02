@@ -1,9 +1,7 @@
 <h1>Register</h1>
 
 <?php 
-  if(isset($_SESSION['message'])) {
-    echo $_SESSION['message'];
-  }
+  displayGlobalMessage();
 ?>
 
 <form method="post" class="validatedForm">

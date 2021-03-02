@@ -8,16 +8,14 @@ if($_SESSION['loggedIn'] == false || $_SESSION['clientData']['clientLevel'] < 2)
 <h1>Add Vehicle</h1>
 
 <?php
-if (isset($message)) {
-  echo $message;
-}
+  displayGlobalMessage();
 ?>
 
 <p>* Note all Fields are Required</p>
 <form class="forms" method="post">
   <label for="classificationId">Classification</label>
   <select id="classificationId" name="classificationId">      
-    <?php foreach ($classificationList as $classification) { ?>
+    <?php foreach ($classifications as $classification) { ?>
       <option 
         <?php if(isset($vehicle) && $vehicle->classificationId == $classification->classificationId) echo "selected "?>
       value="<?= $classification->classificationId ?>"><?= $classification->classificationName ?></option>
@@ -37,8 +35,7 @@ if (isset($message)) {
     <?php if(isset($vehicle->invModel)){echo "value='$vehicle->invModel'";}  ?>
     required>
   <label for="invDescription">Description</label>
-  <textarea id="invDescription" name="invDescription" rows="3" required><?php if(isset($vehicle->invDescription)){echo $vehicle->invDescription;}?>
-  </textarea>
+  <textarea id="invDescription" name="invDescription" rows="3" required><?php if(isset($vehicle->invDescription)){echo $vehicle->invDescription;}?></textarea>
   <label for="invImage">Image Path</label>
   <input id="invImage" name="invImage" type="text" value="/phpmotors/images/no-image.jpg" 
     <?php if(isset($vehicle->invImage)){echo "value='$vehicle->invImage'";}  ?>

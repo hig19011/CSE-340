@@ -61,6 +61,7 @@ switch ($action) {
       setcookie('firstName',$clientFirstName, strtotime('+1 year'),'/');
       $_SESSION['message'] = "<p class='successMessage'>Thanks for registering $clientFirstName. Please use your email and password to login.</p>";   
       header('Location: /phpmotors/accounts/?action=login-page');
+      exit;
     } else {
       $_SESSION['message'] = "<p class='errorMessage'>Sorry $clientFirstName, but the registration failed. Please try again.</p>";
     }
@@ -96,8 +97,7 @@ switch ($action) {
       $_SESSION['message'] = '<p class="noticeMessage">Please check your password and try again.</p>';
       break;
     }
-    $_SESSION['message'] = "";
-    
+        
     // User is value, consider them logged in.
     $_SESSION['loggedIn'] = true;
 
@@ -109,24 +109,25 @@ switch ($action) {
 
     $pageTitle = $adminTitle;
     $contentPath = $adminPath;
-
     break;
+
   case 'login-page':
     $pageTitle = $loginTitle;
     $contentPath = $loginPath;
     break;
+
   case 'register-page':
     $pageTitle = $registerTitle;
     $contentPath = $registerPath;
-    $_SESSION['message'] = "";
     break;
 
   case 'logout':
     session_unset();
     session_destroy();
-    header('Location: /phpmotors/');
-    
+    header('Location: /phpmotors/');    
+    exit;
     break;
+
   default:
     $pageTitle = $adminTitle;
     $contentPath = $adminPath;
