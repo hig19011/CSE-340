@@ -22,12 +22,15 @@ if($_SESSION['loggedIn'] == false){
   <?php 
     if($_SESSION['clientData']['clientLevel'] > 1) { ?>
   <h2>Account Management</h2>
-  <p>Use this link to update account information.
+  <p>Use this link to update account information.</p>
   <div><a href="/phpmotors/accounts/?action=update-client-page">Update Account Information</a></div>
   <?php } ?>
+
+  <h2>Vehicle Management</h2>
+  <p>Use this link to manage the inventory.</p>
   <?php 
     if($_SESSION['clientData']['clientLevel'] > 1) {
-      echo "<p><a href='/phpmotors/vehicles'>Vehicle Management</a></p>";
+      echo "<div><a href='/phpmotors/vehicles'>Vehicle Management</a></div>";
     }
   ?>
 </section>

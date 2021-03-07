@@ -125,15 +125,12 @@ switch ($action) {
 
     $clientData = getClientById($_SESSION['clientData']['clientId']);
 
+    // putting values in to these variable to minimize if/else logic in the view for sticky fields.
     $clientFirstName = $clientData['clientFirstName'];
     $clientLastName = $clientData['clientLastName'];
     $clientEmail = $clientData['clientEmail'];
     $clientId = $clientData['clientId'];
-
-    // $clientFirstName = $_SESSION['clientData']['clientFirstName'];
-    // $clientLastName = $_SESSION['clientData']['clientLastName'];
-    // $clientEmail = $_SESSION['clientData']['clientEmail'];
-
+    
     $checkPassword = checkPassword($clientPassword);
 
     // Check for missing data
@@ -221,11 +218,6 @@ switch ($action) {
     $clientEmail = $clientData['clientEmail'];
     $clientId = $clientData['clientId'];
    
-    // $clientFirstName = $_SESSION['clientData']['clientFirstName'];
-    // $clientLastName = $_SESSION['clientData']['clientLastName'];
-    // $clientEmail = $_SESSION['clientData']['clientEmail'];
-    // $clientId = $_SESSION['clientData']['clientId'];
-
     $pageTitle = $updateClientTitle;
     $contentPath = $updateClientPath;
     break;
