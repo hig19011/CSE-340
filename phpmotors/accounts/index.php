@@ -125,7 +125,8 @@ switch ($action) {
 
     $clientData = getClientById($_SESSION['clientData']['clientId']);
 
-    // putting values in to these variable to minimize if/else logic in the view for sticky fields.
+    // Putting values in to these variable to minimize if/else logic in the view for sticky fields.  
+    // The view shouldn't be deciding which objects to use when populating its fields.
     $clientFirstName = $clientData['clientFirstName'];
     $clientLastName = $clientData['clientLastName'];
     $clientEmail = $clientData['clientEmail'];
@@ -213,6 +214,8 @@ switch ($action) {
     //Get the client data
     $clientData = getClientById($_SESSION['clientData']['clientId']);
 
+    // Putting values in to these variable to minimize if/else logic in the view for sticky fields.  
+    // The view shouldn't be deciding which objects to use when populating its fields.
     $clientFirstName = $clientData['clientFirstName'];
     $clientLastName = $clientData['clientLastName'];
     $clientEmail = $clientData['clientEmail'];

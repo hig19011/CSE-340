@@ -1,10 +1,3 @@
-<?php 
-  if($_SESSION['clientData']['clientLevel'] <= 1){
-    header('Location: /phpmotors/');
-    exit;
-  }  
-?>
-
 <h1>Update Account Information</h1>
 
 <?php 

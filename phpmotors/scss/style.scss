@@ -178,6 +178,8 @@ form {
 }
 
 .validatedForm {  
+  margin-bottom: 24px;
+
   input:invalid{
     border: 1px solid red;
   }
