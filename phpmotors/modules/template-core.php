@@ -8,12 +8,14 @@
     <base href="/phpmotors/"/>
     <link rel="stylesheet" media="screen" href="css/style.css" />    
   </head>
-  <body> 
+  <body>  
       <header>
         <?php require $_SERVER['DOCUMENT_ROOT'].'/phpmotors/modules/header.php' ?>
       </header>
       <nav>
-        <!-- <?php require $_SERVER['DOCUMENT_ROOT'].'/phpmotors/modules/nav.php' ?> -->
+        <?php 
+        // require $_SERVER['DOCUMENT_ROOT'].'/phpmotors/modules/nav.php' 
+        ?>
         <?php $nav = buildNav($classifications); echo $nav; ?>
       </nav>
       <main>

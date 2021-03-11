@@ -11,7 +11,7 @@
       </ul>    
     </section>
 
-    <img src="images/delorean.jpg" alt="Drawning of a Delorean">
+    <img src="/phpmotors/images/vehicles/delorean.jpg" alt="Drawing of a Delorean">
     <button class="btn-action">Own Today</button>
   </div>
 

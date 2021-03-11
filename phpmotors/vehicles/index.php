@@ -21,6 +21,10 @@ $updateVehicleTitle = 'Update Vehicle';
 $updateVehiclePath = '/phpmotors/view/vehicle-update.php';
 $deleteVehicleTitle = 'Update Vehicle';
 $deleteVehiclePath = '/phpmotors/view/vehicle-delete.php';
+$classificationTitle = 'Vehicles';
+$classificationPath = '/phpmotors/view/classification.php';
+$inventoryDetailPath = '/phpmotors/view/vehicle-detail.php';
+
 
 
 $action = filter_input(INPUT_POST, 'action');
@@ -229,6 +233,34 @@ switch ($action) {
     }
     
     $contentPath = $deleteVehiclePath;
+    break;
+
+  case 'classification':
+    $classificationName = filter_input(INPUT_GET, 'classificationName', FILTER_SANITIZE_STRING);
+    $vehicles = getVehiclesByClassification($classificationName);
+    if(!count($vehicles)){
+      $message = "<p class='notice'>Sorry, no $classificationName vehicles could be found.</p>";
+    } else {
+      $vehicleDisplay = buildVehiclesDisplay($vehicles);
+    }
+
+    $pageTitle = $classificationName.' '.$classificationTitle;
+    $contentPath = $classificationPath;
+
+    break;
+
+  case 'vehicle-detail':
+    $invId = filter_input(INPUT_GET, 'invId', FILTER_SANITIZE_NUMBER_INT);
+    $vehicle = getInvItemInfo($invId);
+    if(!$vehicle){
+      $_SESSION['message'] = "<p class='notice'>Sorry, the details for the vehicle your looking for could not be found.</p>";            
+      $pageTitle = "Vehicle not found";
+    }  
+    else {
+      $vehicleDisplay = buildVehicleDetailDisplay($vehicle);
+      $pageTitle = $vehicle->invMake.' '.$vehicle->invModel;  
+    }    
+    $contentPath = $inventoryDetailPath;
     break;
 
   default:

@@ -23,7 +23,7 @@ function buildNav($classifications) {
   $nav .= '<ul>';
   $nav .= '<li><a href="/phpmotors" title="View the PHP Motors home page">Home</a></li>';
   foreach($classifications as $navItem) { 
-    $nav .= '<li><a href="/phpmotors/index.php?action='.urldecode($navItem->classificationName).'" title="View our '.$navItem->classificationName.' product line">'.$navItem->classificationName.'</a></li>';
+    $nav .= '<li><a href="/phpmotors/vehicles/?action=classification&classificationName='.urldecode($navItem->classificationName).'" title="View our '.$navItem->classificationName.' product line">'.$navItem->classificationName.'</a></li>';
   }
   $nav .= '</ul>';
   $nav .= '</div>';
@@ -48,3 +48,43 @@ function displayGlobalMessage(){
   }
   unset($_SESSION['message']); 
 }
+
+function buildVehiclesDisplay($vehicles){
+  $dv = '<ul id="inv-display">';
+  foreach ($vehicles as $vehicle) {
+   $dv .= '<li>';
+   $dv .= "<a href=/phpmotors/vehicles/?action=vehicle-detail&invId=$vehicle[invId]>";
+   $dv .= "<img src='$vehicle[invThumbnail]' alt='$vehicle[invMake] $vehicle[invModel] on phpmotors.com'>";
+   $dv .= '</a>';
+   $dv .= '<hr>';
+   $dv .= "<a href=/phpmotors/vehicles/?action=vehicle-detail&invId=$vehicle[invId]>";
+   $dv .= "<h2>$vehicle[invMake] $vehicle[invModel]</h2>";
+   $dv .= '</a>';
+   $dv .= "<span>$".number_format(round($vehicle['invPrice'],0))."</span>";
+   $dv .= '</li>';
+  }
+  $dv .= '</ul>';
+  return $dv;
+ }
+
+
+ function buildVehicleDetailDisplay($vehicle){
+   
+   $dv = "<div class='inv-info'>";
+   $dv .= "<div>";
+   $dv .= "<h1>$vehicle->invMake $vehicle->invModel</h1>";
+   $dv .= "<img src='$vehicle->invImage' alt='$vehicle->invMake $vehicle->invModel on phpmotors.com'>";
+   $dv .= '</div>';
+   $dv .= "<div class='inv-details'>";
+   $dv .= "<p>Price: $".number_format(round($vehicle->invPrice,0))."</p>";
+   $dv .= '<hr/>';
+   $dv .= "<h2>$vehicle->invMake $vehicle->invModel Details</h2>";
+   $dv .= '<p class="inv-description">'.$vehicle->invDescription.'</p>';
+   $dv .= "<p>Color: $vehicle->invColor</p>";
+   $dv .= "<p># in Stock: $vehicle->invStock</p>";
+   $dv .= '</div>';
+   $dv .= '</div>';
+  
+  
+  return $dv;
+ }
