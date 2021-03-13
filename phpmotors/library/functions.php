@@ -45,19 +45,19 @@ function buildClassificationList($classifications){
 function displayGlobalMessage(){ 
   if(isset($_SESSION['message'])) {
     echo $_SESSION['message'];
-  }
-  unset($_SESSION['message']); 
+    unset($_SESSION['message']); 
+  }  
 }
 
 function buildVehiclesDisplay($vehicles){
   $dv = '<ul id="inv-display">';
   foreach ($vehicles as $vehicle) {
    $dv .= '<li>';
-   $dv .= "<a href=/phpmotors/vehicles/?action=vehicle-detail&invId=$vehicle[invId]>";
+   $dv .= "<a href='/phpmotors/vehicles/?action=vehicle-detail&invId=$vehicle[invId]'>";
    $dv .= "<img src='$vehicle[invThumbnail]' alt='$vehicle[invMake] $vehicle[invModel] on phpmotors.com'>";
    $dv .= '</a>';
    $dv .= '<hr>';
-   $dv .= "<a href=/phpmotors/vehicles/?action=vehicle-detail&invId=$vehicle[invId]>";
+   $dv .= "<a href='/phpmotors/vehicles/?action=vehicle-detail&invId=$vehicle[invId]'>";
    $dv .= "<h2>$vehicle[invMake] $vehicle[invModel]</h2>";
    $dv .= '</a>';
    $dv .= "<span>$".number_format(round($vehicle['invPrice'],0))."</span>";
