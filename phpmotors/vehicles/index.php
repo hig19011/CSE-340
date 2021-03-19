@@ -7,6 +7,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/phpmotors/library/controller_init.php';
 
 // Get models for controller
 require_once '../model/vehicles-model.php';
+require_once '../model/uploads-model.php';
 require_once '../library/vehicle.php';
 
 
@@ -251,7 +252,7 @@ switch ($action) {
 
   case 'vehicle-detail':
     $invId = filter_input(INPUT_GET, 'invId', FILTER_SANITIZE_NUMBER_INT);
-    $vehicle = getInvItemInfo($invId);
+    $vehicle = getVehicleDetails($invId);
     if(!$vehicle){
       $_SESSION['message'] = "<p class='notice'>Sorry, the details for the vehicle your looking for could not be found.</p>";            
       $pageTitle = "Vehicle not found";
@@ -260,6 +261,13 @@ switch ($action) {
       $vehicleDisplay = buildVehicleDetailDisplay($vehicle);
       $pageTitle = $vehicle->invMake.' '.$vehicle->invModel;  
     }    
+    $thumbnailPaths = getVehicleThumbnails($invId);
+    if(!$vehicle){
+      $_SESSION['message'] = "<p class='notice'>Sorry, some of the vehicle images could not be found.</p>";                  
+    } 
+    else{
+      $thumbnailsDisplay = buildVehicleDetailsThumbnails($thumbnailPaths);
+    }
     $contentPath = $inventoryDetailPath;
     break;
 

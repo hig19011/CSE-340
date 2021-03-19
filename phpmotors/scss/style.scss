@@ -179,7 +179,13 @@ form {
   input#clientPassword {
     display:inline;
   }
-  
+ 
+  fieldset {
+    margin: 12px 0 16px 0;
+  }
+  .pImage {
+    display:inline-block;
+  }
 }
 
 .validatedForm {  
@@ -252,34 +258,81 @@ form {
   padding: 0;
   display: flex;
   flex-direction: column;
- }
- 
- #inv-display li{
-  margin-bottom: .5em;
-  border: 1px #ccc solid;
+  justify-content: space-around;
+  li {
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    border: 1px #ccc solid;
+    list-style-type: none;
+    flex: 1 1 auto;
+    box-shadow: 2px 5px 5px 0 gray;
+  }
+
+  li img {
+    max-width: 100%;
+  }
+
+  span, h2 {
+    margin-left: 12px;
+  }
+}
+
+.thumbnails {
   list-style-type: none;
-  flex: 1 1 auto;
- }
+  display:flex;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: space-around;
+  li {
+    margin-right: 24px;
+    margin-bottom: 24px;
+  }
+  img {
+
+    max-width: 200px;   
+  }  
+}
  
- #inv-display li img {
-     max-width: 100%;
- }
 
- .inv-info {
-   p {
-     font-weight: bolder;
-   }
-   .inv-description {
-     background-color: $light-gray;
-     padding: 4px;
-     font-weight: normal;
-   }
- }
+.inv-info {
+  p {
+    font-weight: bolder;
+  }
+  .inv-description {
+    background-color: $light-gray;
+    padding: 4px;
+    font-weight: normal;
+  }
+}
 
+.notice  {
+  color: $red;
+  font-style: italic;
+  font-weight: bold;
+}
+
+#image-display {
+  list-style-type: none;  
+  img {
+    width: 90%;
+  }
+}
+
+hr {
+  margin: 24px 0;
+}
 
 @media screen and (min-width: 600px){
   .welcome {
     padding-right: 32px;
+  }
+
+  #image-display {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    img {
+      width: 90%;
+    }
   }
 }
 
@@ -343,25 +396,44 @@ form {
   #inv-display {
 		flex-flow: row wrap;
 		justify-content: flex-start;
-	}
+	  
+    span, h2{
+		  font-size: 1rem;
+      margin:0;
+	  }
 
-	#inv-display h2{
-		font-size: 1rem;
-	}
-
-	#inv-display li {
-		max-width: 200px;
-		flex: 1 0 auto;
-		text-align: center;
-		height: 250px;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-	}
+    li {
+      max-width: 200px;
+      flex: 1 0 auto;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
       
-	#inv-display div {
-		width: 100%;
-	}
+    div {
+      width: 100%;
+    }
+  }
+
+  .thumbnails {
+    list-style-type: none;
+    display:flex;
+    justify-content: start;
+    margin: 24px 48px;
+    li {
+      margin-right: 24px;
+    }
+    img {
+      height: 7em;
+      max-width: unset;
+      transition: all .2s linear;
+      transform-origin: center center;
+    }
+    img:hover {
+      transform: scale(2);
+    }
+  }
 
   .inv-info {
     display: grid;
@@ -395,6 +467,13 @@ form {
     }
 
     
+  }
+
+  #image-display {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    img {
+      width: 90%;
+    }
   }
 
 } 

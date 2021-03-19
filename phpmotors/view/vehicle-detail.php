@@ -2,5 +2,7 @@
   displayGlobalMessage();
 
   echo $vehicleDisplay;
+  echo $thumbnailsDisplay;
+  
 ?>
 
