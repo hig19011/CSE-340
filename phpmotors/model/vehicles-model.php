@@ -166,13 +166,14 @@ function getInvItemInfo($invId){
  function getVehicleDetails($invId){
   $db = phpmotorsConnect();
   $sql = 'SELECT i.invId, invMake, invModel, invDescription, im.imgPath as invImage, 
-            imtn.imgPath as invThumbnail, invPrice, invStock, invColor, classificationId 
+            REPLACE(im.imgPath,".","-tn.") as invThumbnail, 
+            invPrice, invStock, invColor, classificationId 
           FROM inventory i 
-            LEFT JOIN images im on i.invId = im.invId and im.imgName not like "%-tn%" 
-            LEFT JOIN images imtn on i.invId = imtn.invId and imtn.imgName like "%-tn%" 
+            INNER JOIN images im on i.invId = im.invId 
           WHERE i.invId = :invId 
-            AND im.imgPrimary = 1 
-            AND imtn.imgPrimary = 1';
+            AND im.imgPrimary = 1
+            and im.imgName not like "%-tn%"';          
+
   $stmt = $db->prepare($sql);
   $stmt->bindValue(':invId', $invId, PDO::PARAM_INT);
   $stmt->execute();
@@ -188,11 +189,12 @@ function getInvItemInfo($invId){
  function getVehiclesByClassification($classificationName){
   $db = phpmotorsConnect();
   $sql = 'SELECT i.invId, invMake, invModel, invDescription, im.imgPath as invImage, 
-            imtn.imgPath as invThumbnail, invPrice, invStock, invColor, classificationId 
+            REPLACE(im.imgPath,".","-tn.") as invThumbnail, invPrice, invStock, invColor, classificationId 
           FROM inventory i 
-            LEFT JOIN images im on i.invId = im.invId and im.imgName not like "%-tn%" AND im.imgPrimary = 1 
-            LEFT JOIN images imtn on i.invId = imtn.invId and imtn.imgName like "%-tn%" AND imtn.imgPrimary = 1
-          WHERE classificationId IN (SELECT classificationId FROM carclassification WHERE classificationName = :classificationName)';
+            INNER JOIN images im on i.invId = im.invId             
+          WHERE classificationId IN (SELECT classificationId FROM carclassification WHERE classificationName = :classificationName)
+            and im.imgName not like "%-tn%" 
+            AND im.imgPrimary = 1';
   $stmt = $db->prepare($sql);
   $stmt->bindValue(':classificationName', $classificationName, PDO::PARAM_STR);
   $stmt->execute();
