@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 19, 2021 at 05:46 AM
+-- Generation Time: Mar 20, 2021 at 11:27 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.13
 
@@ -67,7 +67,6 @@ INSERT INTO `clients` (`clientId`, `clientFirstName`, `clientLastName`, `clientE
 (1, 'Gene', 'Higgins', 'geneh@bulwarkpest.com', '$2y$10$28lOs3iTf0UV/1WYmRkMl.EDf/Kspezpfn5vgu4OODkpaILOwfvbu', '3', NULL),
 (2, 'Admin', 'User', 'admin@cse340.net', '$2y$10$2wShgxvMzpNmKlmiNayL7utwdwuwuRKTmMNhtt2mtyVqPV54Tjv0q', '3', NULL);
 
-
 -- --------------------------------------------------------
 
 --
@@ -83,6 +82,55 @@ CREATE TABLE `images` (
   `imgPrimary` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `images`
+--
+
+INSERT INTO `images` (`imgId`, `invId`, `imgName`, `imgPath`, `imgDate`, `imgPrimary`) VALUES
+(7, 1, 'wrangler.jpg', '/phpmotors/images/vehicles/wrangler.jpg', '2021-03-19 04:55:11', 1),
+(8, 1, 'wrangler-tn.jpg', '/phpmotors/images/vehicles/wrangler-tn.jpg', '2021-03-19 04:55:11', 1),
+(9, 2, 'model-t.jpg', '/phpmotors/images/vehicles/model-t.jpg', '2021-03-19 04:57:46', 1),
+(10, 2, 'model-t-tn.jpg', '/phpmotors/images/vehicles/model-t-tn.jpg', '2021-03-19 04:57:46', 1),
+(11, 3, 'adventador.jpg', '/phpmotors/images/vehicles/adventador.jpg', '2021-03-19 04:57:55', 1),
+(12, 3, 'adventador-tn.jpg', '/phpmotors/images/vehicles/adventador-tn.jpg', '2021-03-19 04:57:55', 1),
+(13, 4, 'monster-truck.jpg', '/phpmotors/images/vehicles/monster-truck.jpg', '2021-03-19 04:58:07', 1),
+(14, 4, 'monster-truck-tn.jpg', '/phpmotors/images/vehicles/monster-truck-tn.jpg', '2021-03-19 04:58:07', 1),
+(15, 5, 'mechanic.jpg', '/phpmotors/images/vehicles/mechanic.jpg', '2021-03-19 04:58:27', 1),
+(16, 5, 'mechanic-tn.jpg', '/phpmotors/images/vehicles/mechanic-tn.jpg', '2021-03-19 04:58:27', 1),
+(19, 6, 'batmobile.jpg', '/phpmotors/images/vehicles/batmobile.jpg', '2021-03-19 04:59:05', 1),
+(20, 6, 'batmobile-tn.jpg', '/phpmotors/images/vehicles/batmobile-tn.jpg', '2021-03-19 04:59:05', 1),
+(21, 7, 'mystery-van.jpg', '/phpmotors/images/vehicles/mystery-van.jpg', '2021-03-19 04:59:33', 1),
+(22, 7, 'mystery-van-tn.jpg', '/phpmotors/images/vehicles/mystery-van-tn.jpg', '2021-03-19 04:59:33', 1),
+(23, 8, 'fire-truck.jpg', '/phpmotors/images/vehicles/fire-truck.jpg', '2021-03-19 04:59:41', 1),
+(24, 8, 'fire-truck-tn.jpg', '/phpmotors/images/vehicles/fire-truck-tn.jpg', '2021-03-19 04:59:41', 1),
+(25, 9, 'crwn-vic.jpg', '/phpmotors/images/vehicles/crwn-vic.jpg', '2021-03-19 05:00:02', 1),
+(26, 9, 'crwn-vic-tn.jpg', '/phpmotors/images/vehicles/crwn-vic-tn.jpg', '2021-03-19 05:00:02', 1),
+(27, 10, 'camaro.jpg', '/phpmotors/images/vehicles/camaro.jpg', '2021-03-19 05:00:17', 1),
+(28, 10, 'camaro-tn.jpg', '/phpmotors/images/vehicles/camaro-tn.jpg', '2021-03-19 05:00:17', 1),
+(29, 11, 'escalade.jpg', '/phpmotors/images/vehicles/escalade.jpg', '2021-03-19 05:00:25', 1),
+(30, 11, 'escalade-tn.jpg', '/phpmotors/images/vehicles/escalade-tn.jpg', '2021-03-19 05:00:25', 1),
+(31, 12, 'hummer.jpg', '/phpmotors/images/vehicles/hummer.jpg', '2021-03-19 05:00:36', 1),
+(32, 12, 'hummer-tn.jpg', '/phpmotors/images/vehicles/hummer-tn.jpg', '2021-03-19 05:00:36', 1),
+(33, 13, 'aerocar.jpg', '/phpmotors/images/vehicles/aerocar.jpg', '2021-03-19 05:00:47', 1),
+(34, 13, 'aerocar-tn.jpg', '/phpmotors/images/vehicles/aerocar-tn.jpg', '2021-03-19 05:00:47', 1),
+(35, 14, 'van.jpg', '/phpmotors/images/vehicles/van.jpg', '2021-03-19 05:01:04', 1),
+(36, 14, 'van-tn.jpg', '/phpmotors/images/vehicles/van-tn.jpg', '2021-03-19 05:01:04', 1),
+(37, 15, 'no-image.png', '/phpmotors/images/vehicles/no-image.png', '2021-03-19 05:01:30', 1),
+(38, 15, 'no-image-tn.png', '/phpmotors/images/vehicles/no-image-tn.png', '2021-03-19 05:01:30', 1),
+(39, 21, 'delorean.jpg', '/phpmotors/images/vehicles/delorean.jpg', '2021-03-19 06:04:30', 1),
+(40, 21, 'delorean-tn.jpg', '/phpmotors/images/vehicles/delorean-tn.jpg', '2021-03-19 06:04:30', 1),
+(41, 3, 'adventador-blue.jpg', '/phpmotors/images/vehicles/adventador-blue.jpg', '2021-03-19 06:34:41', 0),
+(42, 3, 'adventador-blue-tn.jpg', '/phpmotors/images/vehicles/adventador-blue-tn.jpg', '2021-03-19 06:34:41', 0),
+(43, 3, 'adventador-yellow.jpg', '/phpmotors/images/vehicles/adventador-yellow.jpg', '2021-03-19 06:53:49', 0),
+(44, 3, 'adventador-yellow-tn.jpg', '/phpmotors/images/vehicles/adventador-yellow-tn.jpg', '2021-03-19 06:53:49', 0),
+(45, 10, 'camaro-blue.jpg', '/phpmotors/images/vehicles/camaro-blue.jpg', '2021-03-19 07:43:18', 0),
+(46, 10, 'camaro-blue-tn.jpg', '/phpmotors/images/vehicles/camaro-blue-tn.jpg', '2021-03-19 07:43:18', 0),
+(47, 10, 'camaro-red.jpg', '/phpmotors/images/vehicles/camaro-red.jpg', '2021-03-19 07:43:28', 0),
+(48, 10, 'camaro-red-tn.jpg', '/phpmotors/images/vehicles/camaro-red-tn.jpg', '2021-03-19 07:43:28', 0),
+(49, 1, 'wrangler-blue.jpg', '/phpmotors/images/vehicles/wrangler-blue.jpg', '2021-03-19 07:43:41', 0),
+(50, 1, 'wrangler-blue-tn.jpg', '/phpmotors/images/vehicles/wrangler-blue-tn.jpg', '2021-03-19 07:43:41', 0),
+(51, 1, 'wrangler-gray.jpg', '/phpmotors/images/vehicles/wrangler-gray.jpg', '2021-03-19 07:43:53', 0),
+(52, 1, 'wrangler-gray-tn.jpg', '/phpmotors/images/vehicles/wrangler-gray-tn.jpg', '2021-03-19 07:43:53', 0);
 
 -- --------------------------------------------------------
 
@@ -103,26 +151,28 @@ CREATE TABLE `inventory` (
   `classificationId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
 --
 -- Dumping data for table `inventory`
 --
+
 INSERT INTO `inventory` (`invId`, `invMake`, `invModel`, `invDescription`, `invImage`, `invThumbnail`, `invPrice`, `invStock`, `invColor`, `classificationId`) VALUES
-(1, 'Jeep', 'Wrangler', 'The Jeep Wrangler is small and compact with enough power to get you where you want to go. Its great for everyday driving as well as offroading weather that be on the the rocks or in the mud!', '/images/jeep-wrangler.jpg', '/images/jeep-wrangler-tn.jpg', '28045', 4, 'Orange', 1),
-(2, 'Ford', 'Model T', 'The Ford Model T can be a bit tricky to drive. It was the first car to be put into production. You can get it in any color you want as long as it\'s black.', '/images/ford-modelt.jpg', '/images/ford-modelt-tn.jpg', '30000', 2, 'Black', 2),
-(3, 'Lamborghini', 'Adventador', 'This V-12 engine packs a punch in this sporty car. Make sure you wear your seatbelt and obey all traffic laws. ', '/images/lambo-Adve.jpg', '/images/lambo-Adve-tn.jpg', '417650', 1, 'Blue', 3),
-(4, 'Monster', 'Truck', 'Most trucks are for working, this one is for fun. this beast comes with 60in tires giving you tracktions needed to jump and roll in the mud.', '/images/monster.jpg', '/images/monster-tn.jpg', '150000', 3, 'purple', 4),
-(5, 'Mechanic', 'Special', 'Not sure where this car came from. however with a little tlc it will run as good a new.', '/images/ms.jpg', '/images/ms-tn.jpg', '100', 200, 'Rust', 5),
-(6, 'Batmobile', 'Custom', 'Ever want to be a super hero? now you can with the batmobile. This car allows you to switch to bike mode allowing you to easily maneuver through trafic during rush hour.', '/images/bat.jpg', '/images/bat-tn.jpg', '65000', 2, 'Black', 3),
-(7, 'Mystery', 'Machine', 'Scooby and the gang always found luck in solving their mysteries because of there 4 wheel drive Mystery Machine. This Van will help you do whatever job you are required to with a success rate of 100%.', '/images/mm.jpg', '/images/mm-tn.jpg', '10000', 12, 'Green', 1),
-(8, 'Spartan', 'Fire Truck', 'Emergencies happen often. Be prepared with this Spartan fire truck. Comes complete with 1000 ft. of hose and a 1000 gallon tank.', '/images/fire-truck.jpg', '/images/fire-truck-tn.jpg', '50000', 2, 'Red', 4),
-(9, 'Ford', 'Crown Victoria', 'After the police force updated their fleet these cars are now available to the public! These cars come equiped with the siren which is convenient for college students running late to class.', '/images/crown-vic.jpg', '/images/crown-vic-tn.jpg', '10000', 5, 'White', 5),
-(10, 'Chevy', 'Camaro', 'If you want to look cool this is the ar you need! This car has great performance at an affordable price. Own it today!', '/images/camaro.jpg', '/images/camaro-tn.jpg', '25000', 10, 'Silver', 3),
-(11, 'Cadilac', 'Escalade', 'This stylin car is great for any occasion from going to the beach to meeting the president. The luxurious inside makes this car a home away from home.', '/images/escalade.jpg', '/images/escalade-tn.jpg', '75195', 4, 'Black', 1),
-(12, 'GM', 'Hummer', 'Do you have 6 kids and like to go offroading? The Hummer gives you the small interiors with an engine to get you out of any muddy or rocky situation.', '/images/hummer.jpg', '/images/hummer-tn.jpg', '58800', 5, 'Yellow', 5),
-(13, 'Aerocar International', 'Aerocar', 'Are you sick of rushhour trafic? This car converts into an airplane to get you where you are going fast. Only 6 of these were made, get them while they last!', '/images/aerocar.jpg', '/images/aerocar-tn.jpg', '1000000', 6, 'Red', 2),
-(14, 'FBI', 'Survalence Van', 'do you like police shows? You\'ll feel right at home driving this van, come complete with survalence equipments for and extra fee of $2,000 a month. ', '/images/fbi.jpg', '/images/fbi-tn.jpg', '20000', 1, 'Green', 1),
-(15, 'Dog', 'Car', 'Do you like dogs? Well this car is for you straight from the 90s from Aspen, Colorado we have the orginal Dog Car complete with fluffy ears.  ', '/images/dog.jpg', '/images/dog-tn.jpg', '35000', 1, 'Brown', 2);
+(1, 'Jeep', 'Wrangler', 'The Jeep Wrangler is small and compact with enough power to get you where you want to go. Its great for everyday driving as well as offroading weather that be on the the rocks or in the mud!', '/images/jeep-wrangler.jpg', '/images/jeep-wrangler-tn.jpg', '28045.00', 4, 'Orange', 1),
+(2, 'Ford', 'Model T', 'The Ford Model T can be a bit tricky to drive. It was the first car to be put into production. You can get it in any color you want as long as it\'s black.', '/images/ford-modelt.jpg', '/images/ford-modelt-tn.jpg', '30000.00', 2, 'Black', 2),
+(3, 'Lamborghini', 'Adventador', 'This V-12 engine packs a punch in this sporty car. Make sure you wear your seatbelt and obey all traffic laws. ', '/images/lambo-Adve.jpg', '/images/lambo-Adve-tn.jpg', '417650.00', 1, 'Blue', 3),
+(4, 'Monster', 'Truck', 'Most trucks are for working, this one is for fun. this beast comes with 60in tires giving you tracktions needed to jump and roll in the mud.', '/images/monster.jpg', '/images/monster-tn.jpg', '150000.00', 3, 'purple', 4),
+(5, 'Mechanic', 'Special', 'Not sure where this car came from. however with a little tlc it will run as good a new.', '/images/ms.jpg', '/images/ms-tn.jpg', '100.00', 200, 'Rust', 5),
+(6, 'Batmobile', 'Custom', 'Ever want to be a super hero? now you can with the batmobile. This car allows you to switch to bike mode allowing you to easily maneuver through trafic during rush hour.', '/images/bat.jpg', '/images/bat-tn.jpg', '65000.00', 2, 'Black', 3),
+(7, 'Mystery', 'Machine', 'Scooby and the gang always found luck in solving their mysteries because of there 4 wheel drive Mystery Machine. This Van will help you do whatever job you are required to with a success rate of 100%.', '/images/mm.jpg', '/images/mm-tn.jpg', '10000.00', 12, 'Green', 1),
+(8, 'Spartan', 'Fire Truck', 'Emergencies happen often. Be prepared with this Spartan fire truck. Comes complete with 1000 ft. of hose and a 1000 gallon tank.', '/images/fire-truck.jpg', '/images/fire-truck-tn.jpg', '50000.00', 2, 'Red', 4),
+(9, 'Ford', 'Crown Victoria', 'After the police force updated their fleet these cars are now available to the public! These cars come equiped with the siren which is convenient for college students running late to class.', '/images/crown-vic.jpg', '/images/crown-vic-tn.jpg', '10000.00', 5, 'White', 5),
+(10, 'Chevy', 'Camaro', 'If you want to look cool this is the ar you need! This car has great performance at an affordable price. Own it today!', '/images/camaro.jpg', '/images/camaro-tn.jpg', '25000.00', 10, 'Silver', 3),
+(11, 'Cadilac', 'Escalade', 'This stylin car is great for any occasion from going to the beach to meeting the president. The luxurious inside makes this car a home away from home.', '/images/escalade.jpg', '/images/escalade-tn.jpg', '75195.00', 4, 'Black', 1),
+(12, 'GM', 'Hummer', 'Do you have 6 kids and like to go offroading? The Hummer gives you the small interiors with an engine to get you out of any muddy or rocky situation.', '/images/hummer.jpg', '/images/hummer-tn.jpg', '58800.00', 5, 'Yellow', 5),
+(13, 'Aerocar International', 'Aerocar', 'Are you sick of rushhour trafic? This car converts into an airplane to get you where you are going fast. Only 6 of these were made, get them while they last!', '/images/aerocar.jpg', '/images/aerocar-tn.jpg', '1000000.00', 6, 'Red', 2),
+(14, 'FBI', 'Survalence Van', 'do you like police shows? You\'ll feel right at home driving this van, come complete with survalence equipments for and extra fee of $2,000 a month. ', '/images/fbi.jpg', '/images/fbi-tn.jpg', '20000.00', 1, 'Green', 1),
+(15, 'Dog', 'Car', 'Do you like dogs? Well this car is for you straight from the 90s from Aspen, Colorado we have the orginal Dog Car complete with fluffy ears.  ', '/images/dog.jpg', '/images/dog-tn.jpg', '35000.00', 1, 'Brown', 2),
+(21, 'DeLorean Motor Company', 'DeLorean', 'Blast from the past', '/phpmotors/images/no-image.jpg', '/phpmotors/images/no-image.jpg', '100000.00', 2, 'Black', 2),
+(22, 'Ford', 'F-150', 'Most popular truck in the US', '/phpmotors/images/no-image.jpg', '/phpmotors/images/no-image.jpg', '32000.00', 123, 'Blue', 4);
 
 --
 -- Indexes for dumped tables
@@ -175,13 +225,13 @@ ALTER TABLE `clients`
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `imgId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `imgId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `invId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `invId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Constraints for dumped tables
