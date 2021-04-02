@@ -7,9 +7,7 @@ if($_SESSION['loggedIn'] == false || $_SESSION['clientData']['clientLevel'] < 2)
 
 <h1>Add Vehicle</h1>
 
-<?php
-  displayGlobalMessage();
-?>
+<?php displayGlobalMessage(); ?>
 
 <p>* Note all Fields are Required</p>
 <form class="forms" method="post">

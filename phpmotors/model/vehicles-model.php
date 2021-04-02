@@ -1,7 +1,7 @@
 <?php
 
 /* 
- *  This model is used for handling the Vehicles
+ *  This model is used for handling the Inventory
  */
 
 require_once '../library/vehicle.php';

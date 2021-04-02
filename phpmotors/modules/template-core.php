@@ -18,7 +18,7 @@
         ?>
         <?php $nav = buildNav($classifications); echo $nav; ?>
       </nav>
-      <main>
+      <main>        
         <?php require $_SERVER['DOCUMENT_ROOT'].$contentPath ?>
       </main>
       <footer>

@@ -122,17 +122,21 @@ function buildImageDisplay($imageArray) {
    $id .= "<img src='$image[imgPath]' title='$image[invMake] $image[invModel] image on PHP Motors.com' alt='$image[invMake] $image[invModel] image on PHP Motors.com'>";
    $id .= "<p><a href='/phpmotors/uploads?action=delete&imgId=$image[imgId]&filename=$image[imgName]' title='Delete the image'>Delete $image[imgName]</a></p>";
    $id .= '</li>';
- }
+  }
   $id .= '</ul>';
   return $id;
  }
 
  // Build the vehicles select list
-function buildVehiclesSelect($vehicles) {
-  $prodList = '<select name="invId" id="invId">';
-  $prodList .= "<option>Choose a Vehicle</option>";
+function buildVehiclesSelect($vehicles, $invId=0) {
+  $prodList = '<select name="invId" id="invId" required>';
+  $prodList .= '<option selected="" value="">Choose a Vehicle</option>';
   foreach ($vehicles as $vehicle) {
-   $prodList .= "<option value='$vehicle[invId]'>$vehicle[invMake] $vehicle[invModel]</option>";
+    if($vehicle['invId'] == $invId)
+      $selected = "Selected";
+    else
+      $selected = "";
+    $prodList .= "<option value='$vehicle[invId]' $selected>$vehicle[invMake] $vehicle[invModel]</option>";
   }
   $prodList .= '</select>';
   return $prodList;
@@ -257,3 +261,20 @@ function resizeImage($old_image_path, $new_image_path, $max_width, $max_height) 
    // Free any memory associated with the old image
    imagedestroy($old_image);
 } // ends resizeImage function
+
+
+ // Build the request status select list
+ function buildRequestStatusSelect($requestStatus="") {
+  $prodList = '<select name="requestStatus" id="requestStatus">';
+  $statusList = ["Creating","Submitted","Scheduled","Serviced","Canceled"];
+  
+  foreach($statusList as $status) {
+    if($status == $requestStatus)
+      $selected = "Selected";
+    else
+      $selected = "";
+    $prodList .= "<option value='$status' $selected>$status</option>";
+  }
+  $prodList .= '</select>';
+  return $prodList;
+}
