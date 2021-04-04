@@ -139,7 +139,7 @@ switch ($action) {
     $serviceRequest->requestEstimate = filter_input(INPUT_POST, 'requestEstimate',FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
 
     if ($serviceRequest->isInvalid()) {
-      $_SESSION['message'] = '<p class="errorMessage">Please enter information for all fields.</p>';
+      $_SESSION['message'] = '<p class="errorMessage">Please enter information for all of the <b>Update Request</b> fields.</p>';
       $serviceRequestNotes = getServiceRequestNotesByRequest($requestId, false);
       $vehicles = getVehicles();
       $prodSelect = buildVehiclesSelect($vehicles, $serviceRequest->invId);
@@ -182,7 +182,7 @@ switch ($action) {
     $serviceRequestNote->requestNoteShowCustomer = isset($serviceRequestNote->requestNoteShowCustomer) ? 1 : 0;
 
     if ($serviceRequestNote->isInvalid()) {
-      $_SESSION['message'] = '<p class="errorMessage">Please enter information for all fields.</p>';
+      $_SESSION['message'] = '<p class="errorMessage">Please enter information for all of the <b>Add a new Note</b> fields.</p>';
       $serviceRequest = getServiceRequestDetails($requestId);
       $serviceRequestNotes = getServiceRequestNotesByRequest($requestId, false);
       $vehicles = getVehicles();

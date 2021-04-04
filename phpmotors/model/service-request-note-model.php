@@ -29,33 +29,6 @@ function createServiceRequestNote($note)
   return $rowsChanged;
 }
 
-// Update an existing Service Request Note
-function updateServiceRequestNote($note)
-{
-  $db = phpmotorsConnect();
-  $sql = 'UPDATE servicerequestnote 
-          SET requestId = :requestId, 
-              requestNoteDetail = :requestNoteDetail,
-              requestNoteShowCustomer = :requestNoteShowCustomer,
-              clientId = :clientId                            
-          WHERE requestNoteId = :requestNoteId';
-  
-  $stmt = $db->prepare($sql);
-  $stmt->bindValue(':requestNoteId', $note->requestNoteId, PDO::PARAM_INT);
-  $stmt->bindValue(':requestId', $note->requestId, PDO::PARAM_INT);
-  $stmt->bindValue(':requestNoteDetail', $note->requestNoteDetail, PDO::PARAM_STR);
-  $stmt->bindValue(':requestNoteShowCustomer', $note->requestNoteShowCustomer, PDO::PARAM_INT);
-  $stmt->bindValue(':clientId', $note->clientId, PDO::PARAM_INT);
-  
-  $stmt->execute();
-  
-  $rowsChanged = $stmt->rowCount();
-  
-  $stmt->closeCursor();
-  
-  return $rowsChanged;
-}
-
 // remove a service request note
 function deleteServiceRequestNote($requestNoteId) {
   $db = phpmotorsConnect();

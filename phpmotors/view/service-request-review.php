@@ -31,13 +31,15 @@ if($_SESSION['loggedIn'] == false){
           echo date_format(new DateTime($request->requestScheduledOn),"n/j/y");
         }?></span>
       <span class="label">Estimate: </span><span class="detail"><?=$request->requestEstimate?></span>
-      <ul>
-        <h4>Notes</h4>
-        <?php 
-          $keys = array_keys(array_column($serviceRequestNotes, 'requestId'), $request->requestId);
-          if(count($keys) == 0) {
-            echo "<p>No notes have been entered.";
-          }          
+      <h4>Notes</h4>
+              
+      <?php 
+        $keys = array_keys(array_column($serviceRequestNotes, 'requestId'), $request->requestId);
+        if(count($keys) == 0) {
+          echo "<p>No notes have been entered.";
+        }
+        else {
+          echo "<ul>";
           foreach($serviceRequestNotes as $note){ 
             if($note->requestId == $request->requestId) { ?>
             <li>                 
@@ -46,9 +48,9 @@ if($_SESSION['loggedIn'] == false){
               <span class="label">Details</span>
               <span class="detail"><?=$note->requestNoteDetail?></span>
             </li>
-          <?php } ?>
-        <?php } ?>
-      </ul>
+          <?php } ?>          
+        <?php } ?>      
+      <?php echo "</ul>"; } ?>
     </li>
   <?php
   }

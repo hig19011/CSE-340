@@ -158,6 +158,9 @@ h2 {
 .hide-me  {
   display:none !important;
 }
+.mobile-only {
+  display:block;
+}
 
 form {
   label {
@@ -191,17 +194,24 @@ form {
 .validatedForm {  
   margin-bottom: 24px;
 
-  input:invalid{
+  input:invalid, 
+  textarea:invalid,  
+  select:invalid {
     border: 1px solid red;
   }
-  input:required:valid{
+  
+  input:required:valid,
+  textarea:valid,
+  select:valid {
     border: 1px solid green;
   }
 
-  input:focus:invalid {
+  input:focus:invalid,
+  textarea:focus:invalid {
     background-color: pink;
   }
-  input[type=textarea]{
+
+  textarea {
     display: block;
   }
 
@@ -366,6 +376,7 @@ hr {
 .request-info {    
   display:grid;
   grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto auto auto auto auto auto 1fr;
   column-gap: 16px;
   row-gap: 2px;
   margin-left: 16px;
@@ -476,7 +487,10 @@ hr {
     grid-row: 3;
   }  
 
-  
+  .mobile-only {
+    display:none;
+  }
+
   #inv-display {
 		flex-flow: row wrap;
 		justify-content: flex-start;	 
@@ -574,4 +588,19 @@ hr {
     }
   }
 
+  #request-details {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    max-width: 960px;
+
+    .request-info {
+      grid-row: 1/2;
+      grid-column: 1/2;
+    }
+    .request-notes {
+      grid-row: 2/3;
+      grid-column: 1/2;
+    }
+  }
 } 
