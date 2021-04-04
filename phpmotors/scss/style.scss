@@ -389,6 +389,7 @@ hr {
 .request-notes {
   display: grid; 
   grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto auto auto auto 1fr;
   column-gap: 16px;
   row-gap: 2px;
   max-width: 960px;

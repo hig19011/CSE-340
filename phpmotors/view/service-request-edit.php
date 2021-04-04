@@ -30,7 +30,7 @@ if($_SESSION['loggedIn'] == false || $_SESSION['clientData']['clientLevel'] < 2)
     <span class="details"><?=$serviceRequest->requestStatus?></span>
     <span class="label">Scheduled On </span>
     <span class="details"><?php
-      if($serviceRequest->requestScheduledOn == "0000-00-00"){
+      if($serviceRequest->requestScheduledOn == NULL){
         echo "";
       } else {
         echo date_format(new DateTime($serviceRequest->requestScheduledOn),"n/j/y");

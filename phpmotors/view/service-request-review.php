@@ -25,12 +25,12 @@ if($_SESSION['loggedIn'] == false){
       <span class="label">Description: </span><span class="detail"><?=$request->requestDescription?></span>
       <span class="label">Status: </span><span class="detail"><?=$request->requestStatus?></span>
       <span class="label">Scheduled On: </span><span class="detail"><?php
-        if($request->requestScheduledOn == "0000-00-00"){
+        if($request->requestScheduledOn == NULL){
           echo "";
         } else {
           echo date_format(new DateTime($request->requestScheduledOn),"n/j/y");
         }?></span>
-      <span class="label">Estimate: </span><span class="detail"><?=$request->requestEstimate?></span>
+      <span class="label">Estimate: </span><span class="detail"><?php echo "$".number_format(round($request->requestEstimate,0));?></span>
       <h4>Notes</h4>
               
       <?php 

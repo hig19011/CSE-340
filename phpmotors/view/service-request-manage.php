@@ -17,13 +17,13 @@ if($_SESSION['loggedIn'] == false || $_SESSION['clientData']['clientLevel'] < 2)
       <span class="label">Description: </span><span class="detail"><?=$request->requestDescription?></span>
       <span class="label">Status: </span><span class="detail"><?=$request->requestStatus?></span>
       <span class="label">Scheduled On: </span><span class="detail"><?php
-        if($request->requestScheduledOn == "0000-00-00"){
+        if($request->requestScheduledOn == NULL){
           echo "";
         } else {
           echo date_format(new DateTime($request->requestScheduledOn),"n/j/y");
         }?>
       </span>
-      <span class="label">Estimate: </span><span class="detail"><?=$request->requestEstimate?></span>
+      <span class="label">Estimate: </span><span class="detail"><?php echo "$".number_format(round($request->requestEstimate,0));?></span>
       <a href="/phpmotors/service-request/?action=edit&requestId=<?=$request->requestId?>">Edit Request</a>     
     </li>
   <?php

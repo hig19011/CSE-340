@@ -198,7 +198,7 @@ CREATE TABLE `servicerequest` (
 
 INSERT INTO `servicerequest` (`requestId`, `clientId`, `invId`, `requestDescription`, `requestStatus`, `requestSubmittedOn`, `requestScheduledOn`, `requestEstimate`) VALUES
 (1, 18, 6, 'Wheels keep falling off.', 'Scheduled', '2021-03-27', '2021-04-02', '2700.00'),
-(2, 18, 6, 'The steering wheel is wobbly too.', 'Canceled', '2021-03-28', '0000-00-00', '0.00'),
+(2, 18, 6, 'The steering wheel is wobbly too.', 'Canceled', '2021-03-28', NULL, '0.00'),
 (3, 1, 7, 'Funky smells', 'Scheduled', '2021-03-27', '2021-04-08', '502.00'),
 (4, 1, 7, 'Add custom lighting to interior.', 'Submitted', '2021-03-31', NULL, '0.00');
 

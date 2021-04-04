@@ -30,7 +30,7 @@ class ServiceRequest {
       || empty($this->requestDescription)
       || empty($this->requestStatus)
       || $this->requestEstimate < 0
-      || ($submittedOn != null && !checkdate($submittedOn['month'],$submittedOn['day'],$submittedOn['year']))
+      || ($submittedOn["year"] != false && !checkdate($submittedOn['month'],$submittedOn['day'],$submittedOn['year']))
     ) {
       return true;
     }
